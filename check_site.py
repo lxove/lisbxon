@@ -32,7 +32,7 @@ def send_telegram_message(message):
 
 # Main
 if not check_element():
-    alert_msg = f'⚠️Registration might have opened! (Element {ELEMENT_SELECTOR} NOT FOUND on {URL})'
+    alert_msg = f'⚠️Anmälan kan ha öppnat! Hemsidan har i alla fall ändrats: {URL}'
     send_telegram_message(alert_msg)
 else:
     print("Element found. All good.")
