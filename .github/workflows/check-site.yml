@@ -24,8 +24,7 @@ jobs:
 
       - name: Run site check script
         env:
-          URL: ${{ vars.URL }}
-          ELEMENT_SELECTOR: ${{ vars.ELEMENT_SELECTOR }}
+          URL: ${{ secrets.URL }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python check_site.py
