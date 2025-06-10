@@ -1,3 +1,4 @@
+from time import sleep
 import requests
 from bs4 import BeautifulSoup
 import os
@@ -29,9 +30,15 @@ def send_telegram_message(message):
     else:
         print('Notification sent.')
 
-# Main
-if not check_element():
-    alert_msg = f'⚠️Anmälan kan ha öppnat! Hemsidan har i alla fall ändrats: {URL}'
-    send_telegram_message(alert_msg)
+retries = 0
+backoff = [5, 10, 20, 40, 80, 160, 240]
+while(not check_element() and retries < len(backoff)):
+    print(f"Could not find element, retrying in {backoff[retries]} seconds")
+    sleep(backoff[retries])
+    retries+=1
+
+if(retries == (len(backoff)-1)):
+        alert_msg = f'⚠️Anmälan kan ha öppnat! Hemsidan har i alla fall ändrats: {URL}'
+        send_telegram_message(alert_msg)
 else:
     print("Element found. All good.")
