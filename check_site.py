@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import os
 
 URL = os.environ['URL']
-ELEMENT_SELECTOR = os.environ['ELEMENT_SELECTOR']
 TELEGRAM_BOT_TOKEN = os.environ['TELEGRAM_BOT_TOKEN']
 TELEGRAM_CHAT_ID = os.environ['TELEGRAM_CHAT_ID']
 
