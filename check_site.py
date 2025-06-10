@@ -11,7 +11,8 @@ def check_element():
     try:
         response = requests.get(URL)
         soup = BeautifulSoup(response.text, 'html.parser')
-        element = soup.select_one(ELEMENT_SELECTOR)
+        element = soup.find('a', href='https://maratonaclubedeportugal.com/wp-content/uploads/Announcement_04.06.pdf',
+                            string='Registrations soon')
         return element is not None
     except Exception as e:
         print(f'Error checking site: {e}')
